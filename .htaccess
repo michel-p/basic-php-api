@@ -1,0 +1,7 @@
+#HTACCESS to redirect every url to a single endpoint API with all arguments in a request param
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule api/(.*)$ api_dispatcher.php?request=$1 [QSA,NC,L]
+</IfModule>

@@ -1,5 +1,6 @@
 <?php
 
+namespace BasicPHPAPI\DAO;
 /**
  * Created by PhpStorm.
  * User: hp

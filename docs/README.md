@@ -20,23 +20,23 @@ I used POSTMAN Chrome extension to test my API Calls
 #### GET
 
 ##### get the basic user informations
-/api/user/:id 
+/api/users/:id 
 
 ##### get the favorite song of a user
-/api/user/favorite/:id 
+/api/users/favorites/:id 
 
 #### POST
 ##### add a pre-existing song to the favorite playlist of a user
-/api/user/favorite/:user_id/:song_id
+/api/users/favorites/:user_id/:song_id
 
 #### DELETE
 ##### delete a pre-existing song to the favorite playlist of a user
-/api/user/favorite/:user_id/:song_id
+/api/users/favorites/:user_id/:song_id
 
 ###List of available call for Songs
 
 #### GET
-/api/song/:id
+/api/songs/:id
 
 #Architecture guidelines
 
@@ -51,8 +51,8 @@ Therefore, a specific behavior can be implemented in the user() function by anal
 So basically we have : /api/{end point}/{optionnal end point action}/{arg1}/{arg2}....
 
 DeezerAPI is a child of BaseAPI and provides all necessary endpoints functions such as
-+ user()
-+ song()
++ users()
++ songs()
 + ... to be implemented
 
 You only have to create your own functions to handle new API calls
@@ -61,7 +61,7 @@ There are also specific conditions for the end point actions.
 
 
 DeezerAPI returns a JSONResponse object, so all responses are similar.
-Example : /api/user/1 (GET)
+Example : /api/users/1 (GET)
 
 `
 {

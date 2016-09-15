@@ -1,5 +1,7 @@
 <?php
 
+namespace BasicPHPAPI\API;
+
 /**
  * Class API
  * Handles all the parsing of the request and the return of the json response

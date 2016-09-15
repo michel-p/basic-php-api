@@ -1,5 +1,6 @@
 <?php
 
+namespace BasicPHPAPI\Json;
 /**
  * a JSON class that represents what the API will always return
  */

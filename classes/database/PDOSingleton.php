@@ -1,5 +1,10 @@
 <?php
 
+namespace BasicPHPAPI\Database;
+
+use PDO;
+use PDOException;
+
 /**
  * PDO SINGLETON CLASS
  */

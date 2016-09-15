@@ -1,5 +1,8 @@
 <?php
 
+namespace BasicPHPAPI\DAO;
+
+use PDO;
 
 /**
  * Class SongDAO

@@ -1,6 +1,9 @@
 <?php
 
-require_once 'DeezerAPI.php';
+require_once "classes/autoload.php";
+require_once "config/dbconfig.php";
+
+use BasicPHPAPI\API\DeezerAPI;
 
 try {
     $API = new DeezerAPI($_REQUEST['request']);

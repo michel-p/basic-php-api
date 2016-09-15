@@ -1,12 +1,12 @@
 <?php
 
-require_once 'AbstractAPI.php';
-require_once 'dao/AbstractDAO.php';
-require_once 'dao/UserDAO.php';
-require_once 'dao/SongDAO.php';
-require_once 'database/config.php';
-require_once 'database/PDOSingleton.php';
-require_once 'database/JSONResponse.php';
+namespace BasicPHPAPI\API;
+
+use BasicPHPAPI\Database\PDOSingleton;
+use BasicPHPAPI\Json\JSONResponse;
+use BasicPHPAPI\DAO\UserDAO;
+use BasicPHPAPI\DAO\SongDAO;
+use Exception;
 
 /**
  * Class DeezerAPI
@@ -29,7 +29,7 @@ class DeezerAPI extends AbstractAPI
      * Handles all possible requests for the USER model
      * @return JSONResponse
      */
-    protected function user()
+    protected function users()
     {
         if(empty($this->args)) {
             $this->jsonResponse->setStatusFailure();
@@ -40,7 +40,7 @@ class DeezerAPI extends AbstractAPI
             /**
              * FAVORITE SONGS OF USER
              */
-            if ($this->endPointAction === 'favorite') {
+            if ($this->endPointAction === 'favorites') {
                 switch ($this->method) {
                     case 'DELETE':
                         /**
@@ -128,7 +128,7 @@ class DeezerAPI extends AbstractAPI
      * Handles all requests for the Song Model
      * @return JSONResponse
      */
-    protected function song()
+    protected function songs()
     {
         if(empty($this->args)) {
             $this->jsonResponse->setStatusFailure();

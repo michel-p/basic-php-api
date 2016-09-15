@@ -40,7 +40,7 @@ I used POSTMAN Chrome extension to test my API Calls
 
 #Architecture guidelines
 
-## Desctription
+## Description
 AbstractAPI contains all the basic stuff of an API. It analyses the Request and calls the method
 which has the same name. Example : /api/user ==> BaseAPI will try to call a function named user().
 

@@ -74,13 +74,18 @@ class DeezerAPI extends AbstractAPI
                         /**
                          * return all favorite songs
                          */
-                        try{
-                            $favoritesSongsCollection = $userDAO->getFavoriteSongs($this->args[0]);
-                            $this->jsonResponse->setStatusSuccess();
-                            $this->jsonResponse->data = array('favorite_songs' => $favoritesSongsCollection);
-                        } catch (Exception $e){
+                        if(count($this->args) == 1) {
+                            try {
+                                $favoritesSongsCollection = $userDAO->getFavoriteSongs($this->args[0]);
+                                $this->jsonResponse->setStatusSuccess();
+                                $this->jsonResponse->data = array('favorite_songs' => $favoritesSongsCollection);
+                            } catch (Exception $e) {
+                                $this->jsonResponse->setStatusFailure();
+                                $this->jsonResponse->data = array($e->getCode() => $e->getMessage());
+                            }
+                        }else{
                             $this->jsonResponse->setStatusFailure();
-                            $this->jsonResponse->data = array( $e->getCode() => $e->getMessage());
+                            $this->jsonResponse->setDataCallIncomplete();
                         }
                         break;
                     case 'PUT':
@@ -105,13 +110,18 @@ class DeezerAPI extends AbstractAPI
                         /**
                          * retrieve user basic informations
                          */
-                        try{
-                            $user = $userDAO->findById($this->args[0]);
-                            $this->jsonResponse->setStatusSuccess();
-                            $this->jsonResponse->data = array('user' => $user);
-                        } catch (Exception $e){
+                        if(count($this->args) == 1) {
+                            try{
+                                $user = $userDAO->findById($this->args[0]);
+                                $this->jsonResponse->setStatusSuccess();
+                                $this->jsonResponse->data = array('user' => $user);
+                            } catch (Exception $e){
+                                $this->jsonResponse->setStatusFailure();
+                                $this->jsonResponse->data = array( $e->getCode() => $e->getMessage());
+                            }
+                        }else{
                             $this->jsonResponse->setStatusFailure();
-                            $this->jsonResponse->data = array( $e->getCode() => $e->getMessage());
+                            $this->jsonResponse->setDataCallIncomplete();
                         }
                         break;
                     case 'PUT':
@@ -146,13 +156,18 @@ class DeezerAPI extends AbstractAPI
                     $this->jsonResponse->setDataMethodNotImplemented();
                     break;
                 case 'GET':
-                    try {
-                        $song = $songDAO->findById($this->args[0]);
-                        $this->jsonResponse->setStatusSuccess();
-                        $this->jsonResponse->data = array('song' => $song);
-                    } catch (Exception $e) {
+                    if(count($this->args) == 1) {
+                        try {
+                            $song = $songDAO->findById($this->args[0]);
+                            $this->jsonResponse->setStatusSuccess();
+                            $this->jsonResponse->data = array('song' => $song);
+                        } catch (Exception $e) {
+                            $this->jsonResponse->setStatusFailure();
+                            $this->jsonResponse->data = array($e->getCode() => $e->getMessage());
+                        }
+                    }else{
                         $this->jsonResponse->setStatusFailure();
-                        $this->jsonResponse->data = array($e->getCode() => $e->getMessage());
+                        $this->jsonResponse->setDataCallIncomplete();
                     }
                     break;
                 case 'PUT':

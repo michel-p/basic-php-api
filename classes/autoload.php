@@ -1,11 +1,15 @@
 <?php
 
 /**
- * Fetch classes automaticcaly
+ * Fetch classes automatically according to namespaces
  */
 
 namespace BasicPHPAPI;
 
+/**
+ * @param $namespace
+ * @return bool|mixed
+ */
 function load($namespace) {
     $splitpath = explode('\\', $namespace);
     $path = '';
@@ -31,8 +35,15 @@ function load($namespace) {
     return false;
 }
 
+/**
+ * @param $absPath
+ * @return mixed
+ */
 function loadPath($absPath) {
     return include_once($absPath);
 }
 
+/**
+ * Register Autoload
+ */
 spl_autoload_register(__NAMESPACE__ . '\load');

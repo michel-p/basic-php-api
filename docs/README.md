@@ -40,6 +40,7 @@ I used POSTMAN Chrome extension to test my API Calls
 
 #Architecture guidelines
 
+## Desctription
 AbstractAPI contains all the basic stuff of an API. It analyses the Request and calls the method
 which has the same name. Example : /api/user ==> BaseAPI will try to call a function named user().
 
@@ -77,7 +78,13 @@ Example : /api/users/1 (GET)
 }
 `
 
+
+## Namespacing and autoloading
+Autoloading is handled by namespaces. Don't forget to add the "use ..." statements to properly load all necessary classes.
+
+
 #What I would have used normally
++ Teamwork !!
 + Symfony Framework
 + Swagger
 + Nelmio apidoc bundle

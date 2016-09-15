@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Main entry point for API calls
+ */
+
 require_once "classes/autoload.php";
 require_once "config/dbconfig.php";
 

@@ -85,6 +85,7 @@ abstract class AbstractAPI
      */
     public function processEndPointMethod() {
         if (method_exists($this, $this->endPoint)) {
+            //TO DISCUSS - should we return HTTP CODE STATUS ? Or always return 200 with JSON explicit status ? I chosed the second one
             return $this->_response($this->{$this->endPoint}($this->args));
         }
         return $this->_response("No Endpoint: $this->endPoint", 404);

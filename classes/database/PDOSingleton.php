@@ -4,6 +4,7 @@ namespace BasicPHPAPI\Database;
 
 use PDO;
 use PDOException;
+use PDOStatement;
 
 /**
  * PDO SINGLETON CLASS
@@ -17,7 +18,7 @@ class PDOSingleton
      * @param $dsn string eg: mysql:host=localhost;dbname=testdb
      * @param bool (optionnal) $username
      * @param bool (optionnal) $password
-     * @param bool (optionnal) $driver_options
+     * @param array (optionnal) $driver_options
      */
     public function __construct($dsn, $username=false, $password=false, $driver_options=array())
     {
